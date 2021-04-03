@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_routing_app/models/email.dart';
 
 class DetailPage extends StatelessWidget {
+  static String routeName = '/email/detail';
+
   @override
   Widget build(BuildContext context) {
     final EmailModel email = ModalRoute.of(context).settings.arguments;
