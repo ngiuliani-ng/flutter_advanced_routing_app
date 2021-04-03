@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:page_transition/page_transition.dart';
+
 import 'package:flutter_advanced_routing_app/models/email.dart';
-// import 'package:flutter_advanced_routing_app/pages/detail.dart';
+import 'package:flutter_advanced_routing_app/pages/detail.dart';
 
 class HomePage extends StatelessWidget {
   final List<EmailModel> emails = [
@@ -86,32 +88,45 @@ class HomePage extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/email/detail',
-          arguments: EmailModel(
-            sender: emails[index].sender,
-            object: emails[index].object,
-            body: emails[index].body,
-            date: emails[index].date,
-            color: emails[index].color,
-          ),
-        );
-        // Navigator.push(
+        // Navigator.pushNamed(
         //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => DetailPage(),
-        //     settings: RouteSettings(
-        //       arguments: EmailModel(
-        //         sender: emails[index].sender,
-        //         object: emails[index].object,
-        //         body: emails[index].body,
-        //         date: emails[index].date,
-        //         color: emails[index].color,
-        //       ),
-        //     ),
+        //   '/email/detail',
+        //   arguments: EmailModel(
+        //     sender: emails[index].sender,
+        //     object: emails[index].object,
+        //     body: emails[index].body,
+        //     date: emails[index].date,
+        //     color: emails[index].color,
         //   ),
         // );
+        Navigator.push(
+          context,
+          PageTransition(
+            type: PageTransitionType.bottomToTop,
+            child: DetailPage(),
+            settings: RouteSettings(
+              arguments: EmailModel(
+                sender: emails[index].sender,
+                object: emails[index].object,
+                body: emails[index].body,
+                date: emails[index].date,
+                color: emails[index].color,
+              ),
+            ),
+          ),
+          // MaterialPageRoute(
+          //   builder: (context) => DetailPage(),
+          //   settings: RouteSettings(
+          //     arguments: EmailModel(
+          //       sender: emails[index].sender,
+          //       object: emails[index].object,
+          //       body: emails[index].body,
+          //       date: emails[index].date,
+          //       color: emails[index].color,
+          //     ),
+          //   ),
+          // ),
+        );
       },
     );
   }
