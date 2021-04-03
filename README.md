@@ -13,3 +13,7 @@ A new Flutter application. Fudeo exercises.
         - Argument: **PushNamed**
     - Lesson 6.4: https://bit.ly/31L7qNS
         - Argument: **Transizioni**
+            - Screenshot App: Screenshot\Screenshot_1617486927.png
+            - Screenshot App: Screenshot\Screenshot_1617486929.png
+            - Screenshot App: Screenshot\Screenshot_1617486931.png
+            - Screenshot App: Screenshot\Screenshot_1617486934.png
