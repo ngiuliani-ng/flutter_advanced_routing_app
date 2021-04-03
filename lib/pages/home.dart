@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_advanced_routing_app/models/email.dart';
-import 'package:flutter_advanced_routing_app/pages/detail.dart';
+// import 'package:flutter_advanced_routing_app/pages/detail.dart';
 
 class HomePage extends StatelessWidget {
   final List<EmailModel> emails = [
     EmailModel(
-      sender: "American Express",
-      object: "The average of your annual balance for 2020",
+      sender: 'American Express',
+      object: 'The average of your annual balance for 2020',
       body:
-          "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-      date: "23/04/2021",
+          'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.',
+      date: '23/04/2021',
       color: Colors.orange,
     ),
     EmailModel(
-      sender: "Google",
-      object: "Google Workspace: your invoice is available for ngiuliani.com",
+      sender: 'Google',
+      object: 'Google Workspace: your invoice is available for ngiuliani.com',
       body:
-          "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-      date: "22/04/2021",
+          'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.',
+      date: '22/04/2021',
       color: Colors.green,
     ),
     EmailModel(
-      sender: "Facebook",
-      object: "Your Facebook Ad invoice (Account ID: 000000000)",
+      sender: 'Facebook',
+      object: 'Your Facebook Ad invoice (Account ID: 000000000)',
       body:
-          "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-      date: "21/04/2021",
+          'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.',
+      date: '21/04/2021',
       color: Colors.blue,
     ),
   ];
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
         icon: Icon(Icons.dehaze),
         onPressed: () {},
       ),
-      title: Text("Inbox"),
+      title: Text('Inbox'),
       centerTitle: true,
       actions: [
         IconButton(
@@ -86,21 +86,32 @@ class HomePage extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => DetailPage(),
-            settings: RouteSettings(
-              arguments: EmailModel(
-                sender: emails[index].sender,
-                object: emails[index].object,
-                body: emails[index].body,
-                date: emails[index].date,
-                color: emails[index].color,
-              ),
-            ),
+          '/email/detail',
+          arguments: EmailModel(
+            sender: emails[index].sender,
+            object: emails[index].object,
+            body: emails[index].body,
+            date: emails[index].date,
+            color: emails[index].color,
           ),
         );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => DetailPage(),
+        //     settings: RouteSettings(
+        //       arguments: EmailModel(
+        //         sender: emails[index].sender,
+        //         object: emails[index].object,
+        //         body: emails[index].body,
+        //         date: emails[index].date,
+        //         color: emails[index].color,
+        //       ),
+        //     ),
+        //   ),
+        // );
       },
     );
   }
