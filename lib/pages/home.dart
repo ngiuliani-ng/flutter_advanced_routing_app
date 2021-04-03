@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_advanced_routing_app/models/email.dart';
+import 'package:flutter_advanced_routing_app/pages/detail.dart';
 
 class HomePage extends StatelessWidget {
   final List<EmailModel> emails = [
     EmailModel(
       sender: "American Express",
-      object:
+      object: "The average of your annual balance for 2020",
+      body:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-      date: "23 April",
-      color: Colors.grey,
+      date: "23/04/2021",
+      color: Colors.orange,
     ),
     EmailModel(
       sender: "Google",
-      object:
+      object: "Google Workspace: your invoice is available for ngiuliani.com",
+      body:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-      date: "22 April",
-      color: Colors.red,
+      date: "22/04/2021",
+      color: Colors.green,
     ),
     EmailModel(
       sender: "Facebook",
-      object:
+      object: "Your Facebook Ad invoice (Account ID: 000000000)",
+      body:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-      date: "21 April",
-      color: Color.fromRGBO(45, 136, 255, 1),
+      date: "21/04/2021",
+      color: Colors.blue,
     ),
   ];
 
@@ -55,11 +59,11 @@ class HomePage extends StatelessWidget {
   Widget body() {
     return ListView.builder(
       itemCount: emails.length,
-      itemBuilder: (context, index) => email(index),
+      itemBuilder: (context, index) => email(context, index),
     );
   }
 
-  Widget email(int index) {
+  Widget email(BuildContext context, int index) {
     return ListTile(
       leading: CircleAvatar(
         radius: 25,
@@ -77,10 +81,27 @@ class HomePage extends StatelessWidget {
       trailing: Text(
         emails[index].date,
         style: TextStyle(
+          fontSize: 12,
           color: Colors.grey,
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(),
+            settings: RouteSettings(
+              arguments: EmailModel(
+                sender: emails[index].sender,
+                object: emails[index].object,
+                body: emails[index].body,
+                date: emails[index].date,
+                color: emails[index].color,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
